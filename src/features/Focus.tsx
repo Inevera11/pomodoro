@@ -3,9 +3,10 @@ import { colors } from "../utils/colors";
 import { TextInput } from "react-native-paper";
 import { useState } from "react";
 import { RoundedButton } from "../components/RoundedButton";
+import { fontSizes, spacing } from "../utils/sizes";
 
 type FocusTypes = {
-  setCurrSubject: (value: boolean) => void;
+  setCurrSubject: (value: string) => void;
 };
 
 export const Focus = ({ setCurrSubject }: FocusTypes) => {
@@ -20,7 +21,11 @@ export const Focus = ({ setCurrSubject }: FocusTypes) => {
             onChangeText={(e) => setSubject(e)}
           />
           <View>
-            <RoundedButton size={50} title="+" />
+            <RoundedButton
+              size={50}
+              title="+"
+              onPress={() => setCurrSubject(subject)}
+            />
           </View>
         </View>
         <Text style={styles.text}>{subject}</Text>
@@ -35,7 +40,7 @@ const styles = StyleSheet.create({
   },
   textInputStyles: {
     flex: 1,
-    marginRight: 10,
+    marginRight: spacing.sm,
   },
   button: {
     justifyContent: "center",
@@ -43,7 +48,7 @@ const styles = StyleSheet.create({
   inputContainer: {
     justifyContent: "space-evenly",
     alignItems: "center",
-    padding: 25,
+    padding: spacing.lg,
     color: colors.white,
     flexDirection: "row",
   },

@@ -1,5 +1,6 @@
 import { colors } from "./src/utils/colors";
 import { useState } from "react";
+import Timer from "./src/components/Timer";
 import {
   StyleSheet,
   Platform,
@@ -13,9 +14,9 @@ import { Focus } from "./src/features/Focus";
 // view = div,yarn ifconfig
 
 export default function App() {
-  const [currentSubject, setCurrentSubject] = useState<boolean>(true);
+  const [currentSubject, setCurrentSubject] = useState<string>("");
 
-  const setCurrentSubjectProps: (value: boolean) => void = (value) => {
+  const setCurrentSubjectProps: (value: string) => void = (value) => {
     setCurrentSubject(value);
   };
 
@@ -23,11 +24,13 @@ export default function App() {
     <>
       <SafeAreaView style={styles.container}>
         {currentSubject ? (
-          <Focus setCurrSubject={setCurrentSubjectProps} />
+          <Timer
+            focusSubject={currentSubject}
+            onTimerEnd={() => {}}
+            clearSubject={() => {}}
+          />
         ) : (
-          <View>
-            <Text>Hiiiiii m8</Text>
-          </View>
+          <Focus setCurrSubject={setCurrentSubjectProps} />
         )}
       </SafeAreaView>
     </>
