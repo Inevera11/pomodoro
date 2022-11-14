@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useKeepAwake } from "expo-keep-awake";
 import {
   View,
   Text,
@@ -9,7 +10,7 @@ import {
 import CountDown from "./CountDown";
 import { RoundedButton } from "./RoundedButton";
 import { colors } from "../utils/colors";
-import { spacing } from "../utils/sizes";
+import { fontSizes, spacing } from "../utils/sizes";
 import { ProgressBar } from "react-native-paper";
 import Timing from "./Timing";
 
@@ -30,6 +31,7 @@ type TimerTypes = {
 };
 
 const Timer = ({ focusSubject, onTimerEnd, clearSubject }: TimerTypes) => {
+  useKeepAwake();
   const [isStarted, setIsStarted] = useState<boolean>(false);
   const [progress, setProgress] = useState<number>(1);
   const [minutes, setMinutes] = useState<number>(0.1);
@@ -141,6 +143,7 @@ const styles = StyleSheet.create({
     color: "red",
     alignSelf: "center",
     paddingBottom: spacing.sm,
+    fontSize: fontSizes.xl,
   },
 });
 export default Timer;

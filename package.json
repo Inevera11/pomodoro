@@ -12,6 +12,7 @@
   "dependencies": {
     "android": "^0.0.8",
     "expo": "~46.0.16",
+    "expo-keep-awake": "^11.0.1",
     "expo-status-bar": "~1.4.0",
     "react": "18.0.0",
     "react-dom": "18.0.0",
