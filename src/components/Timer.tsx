@@ -33,12 +33,18 @@ const Timer = ({ focusSubject, onTimerEnd, clearSubject }: TimerTypes) => {
   const [isStarted, setIsStarted] = useState<boolean>(false);
   const [progress, setProgress] = useState<number>(1);
   const [minutes, setMinutes] = useState<number>(0.1);
+
+  const onEnd = () => {
+    Vibration.vibrate(PATTERN);
+    setProgress(1);
+  };
+
   return (
     <View style={styles.container}>
       <View style={styles.countDown}>
         <CountDown
           minutes={minutes}
-          onEnd={() => Vibration.vibrate(PATTERN)}
+          onEnd={onEnd}
           isPaused={!isStarted}
           onProgress={(progres) => setProgress(progres)}
         />
@@ -59,11 +65,9 @@ const Timer = ({ focusSubject, onTimerEnd, clearSubject }: TimerTypes) => {
       </View>
       <View style={styles.buttonWrapper}>
         <RoundedButton
-          title={progress === 0 ? "reset" : isStarted ? "pause" : "start"}
+          title={progress === 0 ? "Again" : isStarted ? "pause" : "start"}
           onPress={() => {
-            progress === 0
-              ? (setMinutes(minutes), setIsStarted(false))
-              : setIsStarted((prev) => !prev);
+            progress === 0 ? setIsStarted(true) : setIsStarted((prev) => !prev);
           }}
         />
       </View>
