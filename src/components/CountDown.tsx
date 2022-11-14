@@ -27,6 +27,7 @@ const CountDown = ({
       if (time === 0 && interval.current !== null) {
         clearInterval(interval.current);
         onEnd();
+        onProgress(1);
         setMillis(minutesToMillis(minutes));
         return time;
       } else {

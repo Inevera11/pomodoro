@@ -1,6 +1,7 @@
 import { colors } from "./src/utils/colors";
 import { useState } from "react";
 import Timer from "./src/components/Timer";
+import { ProgressBar } from "react-native-paper";
 import {
   StyleSheet,
   Platform,

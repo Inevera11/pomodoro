@@ -36,7 +36,6 @@ const Timer = ({ focusSubject, onTimerEnd, clearSubject }: TimerTypes) => {
 
   const onEnd = () => {
     Vibration.vibrate(PATTERN);
-    setProgress(1);
     setIsStarted(false);
   };
 
@@ -57,7 +56,7 @@ const Timer = ({ focusSubject, onTimerEnd, clearSubject }: TimerTypes) => {
       <View style={{ paddingTop: spacing.sm }}>
         <ProgressBar
           color={colors.yellow}
-          style={{ height: spacing.sm }}
+          style={{ height: spacing.sm, width: undefined }}
           progress={progress}
         />
       </View>
