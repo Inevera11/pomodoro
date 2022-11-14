@@ -13,7 +13,7 @@ export const Focus = ({ setCurrSubject }: FocusTypes) => {
   const [subject, setSubject] = useState<string>("");
   return (
     <>
-      <View style={styles.container}>
+      <View>
         <View style={styles.inputContainer}>
           <TextInput
             style={styles.textInputStyles}
@@ -28,16 +28,12 @@ export const Focus = ({ setCurrSubject }: FocusTypes) => {
             />
           </View>
         </View>
-        <Text style={styles.text}>{subject}</Text>
       </View>
     </>
   );
 };
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-  },
   textInputStyles: {
     flex: 1,
     marginRight: spacing.sm,
