@@ -56,7 +56,7 @@ const Timer = ({ focusSubject, onTimerEnd, clearSubject }: TimerTypes) => {
       <View style={{ paddingTop: spacing.sm }}>
         <ProgressBar
           color={colors.yellow}
-          style={{ height: spacing.sm, width: undefined }}
+          style={{ height: spacing.sm, width: 340 }}
           progress={progress}
         />
       </View>
