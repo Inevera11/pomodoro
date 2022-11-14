@@ -37,6 +37,7 @@ const Timer = ({ focusSubject, onTimerEnd, clearSubject }: TimerTypes) => {
   const onEnd = () => {
     Vibration.vibrate(PATTERN);
     setProgress(1);
+    setIsStarted(false);
   };
 
   return (
@@ -65,9 +66,9 @@ const Timer = ({ focusSubject, onTimerEnd, clearSubject }: TimerTypes) => {
       </View>
       <View style={styles.buttonWrapper}>
         <RoundedButton
-          title={progress === 0 ? "Again" : isStarted ? "pause" : "start"}
+          title={isStarted ? "pause" : "start"}
           onPress={() => {
-            progress === 0 ? setIsStarted(true) : setIsStarted((prev) => !prev);
+            setIsStarted((prev) => !prev);
           }}
         />
       </View>
