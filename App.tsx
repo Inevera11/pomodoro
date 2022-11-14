@@ -10,11 +10,13 @@ import {
   Text,
 } from "react-native";
 import { Focus } from "./src/features/Focus";
+import { FocusHistory } from "./src/features/FocusHistory";
 
 // view = div,yarn ifconfig
 
 export default function App() {
   const [currentSubject, setCurrentSubject] = useState<string>("");
+  const [focusHistory, setFocusHistory] = useState<[]>([]);
 
   const setCurrentSubjectProps: (value: string) => void = (value) => {
     setCurrentSubject(value);
@@ -30,7 +32,10 @@ export default function App() {
             clearSubject={setCurrentSubjectProps}
           />
         ) : (
-          <Focus setCurrSubject={setCurrentSubjectProps} />
+          <>
+            <Focus setCurrSubject={setCurrentSubjectProps} />
+            <FocusHistory />
+          </>
         )}
       </SafeAreaView>
     </>

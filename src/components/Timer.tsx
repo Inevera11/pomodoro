@@ -59,8 +59,12 @@ const Timer = ({ focusSubject, onTimerEnd, clearSubject }: TimerTypes) => {
       </View>
       <View style={styles.buttonWrapper}>
         <RoundedButton
-          title={isStarted ? "pause" : "start"}
-          onPress={() => setIsStarted((prev) => !prev)}
+          title={progress === 0 ? "reset" : isStarted ? "pause" : "start"}
+          onPress={() => {
+            progress === 0
+              ? (setMinutes(minutes), setIsStarted(false))
+              : setIsStarted((prev) => !prev);
+          }}
         />
       </View>
       <View style={styles.bottonOnes}>
