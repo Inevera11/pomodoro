@@ -17,7 +17,7 @@ import { FocusHistory } from "./src/features/FocusHistory";
 
 export default function App() {
   const [currentSubject, setCurrentSubject] = useState<string>("");
-  const [focusHistory, setFocusHistory] = useState<[]>([]);
+  const [focusHistory, setFocusHistory] = useState<Array<string>>(["hi"]);
 
   const setCurrentSubjectProps: (value: string) => void = (value) => {
     setCurrentSubject(value);
@@ -29,13 +29,13 @@ export default function App() {
         {currentSubject ? (
           <Timer
             focusSubject={currentSubject}
-            onTimerEnd={() => {}}
+            onTimerEnd={(val) => setFocusHistory((prev) => [...prev, val])}
             clearSubject={setCurrentSubjectProps}
           />
         ) : (
           <>
             <Focus setCurrSubject={setCurrentSubjectProps} />
-            <FocusHistory />
+            <FocusHistory history={focusHistory} />
           </>
         )}
       </SafeAreaView>

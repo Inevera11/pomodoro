@@ -26,7 +26,7 @@ const PATTERN = [
 
 type TimerTypes = {
   focusSubject: string;
-  onTimerEnd: () => void;
+  onTimerEnd: (val: string) => void;
   clearSubject: (val: string) => void;
 };
 
@@ -39,6 +39,7 @@ const Timer = ({ focusSubject, onTimerEnd, clearSubject }: TimerTypes) => {
   const onEnd = () => {
     Vibration.vibrate(PATTERN);
     setIsStarted(false);
+    onTimerEnd(focusSubject);
   };
 
   return (
